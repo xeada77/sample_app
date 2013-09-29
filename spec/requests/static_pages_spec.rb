@@ -11,10 +11,16 @@ describe "StaticPages" do
       expect(page).to have_content('Sample App')
     end
 
-    it "deberia tener el titulo 'Home'" do
+    it "deberia tener el titulo Base" do
 	visit '/static_pages/home'
-	expect(page).to have_title("#{base_title} | Home")
+	expect(page).to have_title("#{base_title}")
     end
+    
+    it "no deberia tener un titulo especial" do
+    visit '/static_pages/home'
+    expect(page).not_to have_title("| Home")
+    end
+    
   end
  
    describe "Help page" do
